@@ -54,6 +54,13 @@ class UserSignUpForm < User
 end
 ```
 
+In some cases it is necessary to use ActiveRecord object directly without form. For such cases conveniently to use method `become()` (built-in ActiveRecord):
+
+```ruby
+user = User.find(params[:id])
+form = user.become(UserSignUpForm)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
