@@ -41,7 +41,7 @@ class UserSignUpForm < User
 
   # add validation if necessary
   # they will be merged with base class' validation
-  validate :password, presence: true
+  validates :password, presence: true
 
   # optional data normalization
   def email=(email)
@@ -58,7 +58,7 @@ In some cases it is necessary to use ActiveRecord object directly without form. 
 
 ```ruby
 user = User.find(params[:id])
-form = user.become(UserSignUpForm)
+form = user.becomes(UserSignUpForm)
 ```
 
 ## Development
