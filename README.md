@@ -29,6 +29,16 @@ Or install it yourself as:
 1. Add permitted params inside the class
 1. Use it as a normal model (without strong_params)
 
+## Generator
+
+Use the supplied generator to generate forms:
+
+    $ rails g active_form_model:form sign_up --model=user
+
+or with namespace model
+
+    $ rails g active_form_model:form admin_post --model=blog/post
+
 ### Example
 
 ```ruby
