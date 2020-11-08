@@ -2,7 +2,7 @@ Description:
     Generates a form for a model with the given name.
 
 Example:
-    rails generate active_form_model:form user
+    rails generate active_form_model:form sign_up --model=user
 
     This will create:
         app/forms/user_form.rb
