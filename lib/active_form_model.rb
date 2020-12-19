@@ -26,7 +26,7 @@ module ActiveFormModel
     end
 
     def _permitted_args
-      @_permitted_args || []
+      @_permitted_args || (superclass.respond_to?(:_permitted_args) && superclass._permitted_args) || []
     end
   end
 
