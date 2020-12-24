@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'test_helper'
 
-class ActiveFormModelTest < MiniTest::Test
+class ActiveFormModelTest < Minitest::Test
   class User
     include ActiveModel::Model
     attr_accessor :valid_attribute, :invalid_attribute
