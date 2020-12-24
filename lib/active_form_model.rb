@@ -1,4 +1,5 @@
 require 'active_form_model/version'
+require 'active_support/concern'
 
 module ActiveFormModel
   class Error < StandardError; end
