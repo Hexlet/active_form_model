@@ -1,5 +1,7 @@
 # ActiveFormModel
 
+[![github action status](https://github.com/Hexlet/active_form_model/workflows/main/badge.svg)](https://actions-badge.atrox.dev/hexlet/hexlet-cv/goto)
+
 Painless forms for ActiveRecord. Based on Inheritance. Included:
 
 * Strong parameters
