@@ -41,57 +41,61 @@ RSpec.describe ActiveFormModel do
     )
   end
 
-  it("has a version number") { expect(::ActiveFormModel::VERSION).not_to be_nil }
+  describe "#initialize" do
+    it "accepts mixed hash params" do
+      expect(form).to have_attributes(
+        valid_attribute: valid_initial_value,
+        invalid_attribute: invalid_initial_value
+      )
+    end
 
-  it("accepts mixed hash params for constructor") do
-    expect(valid_initial_value).to eq(form.valid_attribute)
-    expect(invalid_initial_value).to eq(form.invalid_attribute)
-  end
+    it "accepts mixed strong params" do
+      form = UserForm.new(mixed_strong_params)
 
-  it("accepts mixed strong params for constructor") do
-    form = UserForm.new(mixed_strong_params)
-
-    expect(valid_value).to eq(form.valid_attribute)
-    if mixed_strong_params.respond_to?(:permit)
-      expect(form.invalid_attribute).to be_nil
-    else
-      expect(invalid_value).to eq(form.invalid_attribute)
+      expect(form).to have_attributes(
+        valid_attribute: valid_value,
+        invalid_attribute: nil
+      )
     end
   end
 
-  it("accepts mixed hash params for assignment") do
-    form.assign_attributes(mixed_hash_params)
+  describe '#assign_attributes' do
+    it "accepts mixed hash params" do
+      form.assign_attributes(mixed_hash_params)
 
-    expect(valid_value).to eq(form.valid_attribute)
-    expect(invalid_value).to eq(form.invalid_attribute)
-  end
+      expect(form).to have_attributes(
+        valid_attribute: valid_value,
+        invalid_attribute: invalid_value
+      )
+    end
 
-  it("accepts mixed strong params for assignment") do
-    form.assign_attributes(mixed_strong_params)
-    expect(valid_value).to eq(form.valid_attribute)
+    it "accepts mixed strong params" do
+      form.assign_attributes(mixed_strong_params)
 
-    if mixed_strong_params.respond_to?(:permit)
-      expect(invalid_initial_value).to eq(form.invalid_attribute)
-    else
-      expect(invalid_value).to eq(form.invalid_attribute)
+      expect(form).to have_attributes(
+        valid_attribute: valid_value,
+        invalid_attribute: invalid_initial_value
+      )
     end
   end
 
-  it("accepts mixed hash params for update") do
-    form.update(mixed_hash_params)
+  describe '#update' do
+    it "accepts mixed hash params" do
+      form.update(mixed_hash_params)
 
-    expect(valid_value).to eq(form.valid_attribute)
-    expect(invalid_value).to eq(form.invalid_attribute)
-  end
+      expect(form).to have_attributes(
+        valid_attribute: valid_value,
+        invalid_attribute: invalid_value
+      )
+    end
 
-  it("accepts mixed strong params for update") do
-    form.update(mixed_strong_params)
-    expect(valid_value).to eq(form.valid_attribute)
+    it "accepts mixed strong params" do
+      form.update(mixed_strong_params)
 
-    if mixed_strong_params.respond_to?(:permit)
-      expect(invalid_initial_value).to eq(form.invalid_attribute)
-    else
-      expect(invalid_value).to eq(form.invalid_attribute)
+      expect(form).to have_attributes(
+        valid_attribute: valid_value,
+        invalid_attribute: invalid_initial_value
+      )
     end
   end
 end
