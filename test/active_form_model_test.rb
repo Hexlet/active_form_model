@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 
 class ActiveFormModelTest < Minitest::Test
@@ -17,19 +18,15 @@ class ActiveFormModelTest < Minitest::Test
     permit :valid_attribute
   end
 
-  VALID_VALUE = "foo"
-  INVALID_VALUE = "bar"
-  VALID_INITIAL_VALUE = "qux"
-  INVALID_INITIAL_VALUE = "quz"
+  VALID_VALUE = 'foo'
+  INVALID_VALUE = 'bar'
+  VALID_INITIAL_VALUE = 'qux'
+  INVALID_INITIAL_VALUE = 'quz'
 
   def setup
     @mixed_hash_params = { valid_attribute: VALID_VALUE, invalid_attribute: INVALID_VALUE }
     @mixed_strong_params = ActionController::Parameters.new(@mixed_hash_params)
     @form = UserForm.new(valid_attribute: VALID_INITIAL_VALUE, invalid_attribute: INVALID_INITIAL_VALUE)
-  end
-
-  def test_that_it_has_a_version_number
-    refute_nil ::ActiveFormModel::VERSION
   end
 
   def test_it_accepts_mixed_hash_params_for_constructor
@@ -85,5 +82,9 @@ class ActiveFormModelTest < Minitest::Test
     else
       assert_equal @form.invalid_attribute, INVALID_VALUE
     end
+  end
+
+  def test_naming
+    assert { @form.model_name.name.to_s == 'ActiveFormModelTest::User' }
   end
 end

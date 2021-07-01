@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_form_model/version'
 require 'active_support/concern'
 
@@ -8,6 +10,8 @@ module ActiveFormModel
 
   included do
     prepend Included
+    # raise superclass.inspect
+    # parent.extend ActiveModel::Naming
   end
 
   module Included
@@ -20,7 +24,7 @@ module ActiveFormModel
   module ClassMethods
     delegate :sti_name, to: :superclass
     delegate :human_attribute_name, to: :superclass
-    # delegate :name, to: :superclass
+    delegate :name, to: :superclass
 
     def permit(*args)
       @_permitted_args = args
