@@ -1,8 +1,7 @@
 name: main
 on: [push, pull_request]
 jobs:
-  main:
-    runs-on: ubuntu-latest
+  test:
     strategy:
       fail-fast: true
       matrix:
