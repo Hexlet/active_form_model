@@ -83,8 +83,4 @@ class ActiveFormModelTest < Minitest::Test
       assert_equal @form.invalid_attribute, INVALID_VALUE
     end
   end
-
-  def test_naming
-    assert { @form.model_name.name.to_s == 'ActiveFormModelTest::User' }
-  end
 end
