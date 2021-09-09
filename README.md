@@ -66,7 +66,7 @@ class UserSignUpForm < User
 end
 ```
 
-In some cases it is necessary to use ActiveRecord object directly without form. For such cases conveniently to use method `become()` (built-in ActiveRecord):
+In some cases it is necessary to use ActiveRecord object directly without form. For such cases conveniently to use method `becomes()` (built-in ActiveRecord):
 
 ```ruby
 user = User.find(params[:id])
