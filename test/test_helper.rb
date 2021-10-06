@@ -11,4 +11,9 @@ require 'active_model'
 
 require 'active_form_model'
 
+require_relative 'support/user'
+require_relative 'support/user_form'
+require_relative 'support/admin'
+require_relative 'support/admin_form'
+
 require 'minitest/autorun'
