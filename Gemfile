@@ -5,9 +5,12 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in active_form_model.gemspec
 gemspec
 
-gem 'minitest', '~> 5.0'
-gem 'rake', '~> 12.0'
+gem 'minitest'
 
-gem 'rubocop', '~> 1.18'
+gem 'rake'
 
-gem "minitest-power_assert", "~> 0.3.1"
+gem 'rubocop'
+
+gem 'minitest-power_assert'
+gem 'rubocop-minitest'
+gem 'rubocop-rake'

@@ -7,7 +7,7 @@ module ActiveFormModel
       source_root File.expand_path('templates', __dir__)
 
       def create_form
-        template 'form.rb', File.join('app/forms', class_path, "#{file_name}_form.rb")
+        template 'form.rb', File.join('app/forms', class_path, "#{file_name}_form.erb")
       end
     end
   end
