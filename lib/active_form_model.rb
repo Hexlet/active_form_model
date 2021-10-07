@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_form_model/version'
-require 'active_form_model/virtual'
 require 'active_support/concern'
 
 module ActiveFormModel

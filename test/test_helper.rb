@@ -11,6 +11,10 @@ require 'active_model'
 
 require 'active_form_model'
 
-Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |file| require file }
+require_relative 'support/user'
+require_relative 'support/user_form'
+require_relative 'support/admin'
+require_relative 'support/admin_form'
+require_relative 'support/sign_in_form'
 
 require 'minitest/autorun'

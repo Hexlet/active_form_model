@@ -73,6 +73,38 @@ user = User.find(params[:id])
 form = user.becomes(UserSignUpForm)
 ```
 
+If you want to build virtual form that is not tied to any class:
+
+```ruby
+# frozen_string_literal: true
+
+class SignInForm
+  include ActiveFormModel::Virtual
+
+  properties :email, :password
+
+  validates :email, presence: true
+  validates :password, presence: true
+  validate :user_exists, :user_can_sign_in
+
+  def user_can_sign_in
+    errors.add(:password, :cannot_sign_in) if password.present? && !user&.valid_password?(password)
+  end
+
+  def user_exists
+    errors.add(:email, :user_does_not_exist_html) if email.present? && !user
+  end
+
+  def user
+    @user ||= User.find_by(email: email)
+  end
+
+  def email=(value)
+    @email = value.downcase
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
