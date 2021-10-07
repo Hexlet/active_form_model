@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 require 'active_form_model/version'
+require 'active_form_model/virtual'
 require 'active_support/concern'
 
 module ActiveFormModel
+  autoload :Virtual, 'active_form_model/virtual'
+
   class Error < StandardError; end
 
   extend ActiveSupport::Concern
