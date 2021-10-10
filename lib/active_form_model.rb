@@ -11,13 +11,9 @@ module ActiveFormModel
 
   extend ActiveSupport::Concern
 
-  def self.included(base)
-    base.extend Permittable::ClassMethods
-    base.prepend Permittable::Prepended
-    base.include Permittable
-  end
+  include Permittable
 
-  module ClassMethods
+  class_methods do
     delegate :sti_name, to: :superclass
     delegate :human_attribute_name, to: :superclass
 
