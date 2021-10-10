@@ -2,10 +2,10 @@
 
 require 'active_form_model/version'
 require 'active_support/concern'
-require 'active_form_model/permittable'
 
 module ActiveFormModel
   autoload :Virtual, 'active_form_model/virtual'
+  autoload :Permittable, 'active_form_model/permittable'
 
   class Error < StandardError; end
 
