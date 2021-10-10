@@ -19,7 +19,7 @@ module ActiveFormModel
       end
 
       def permit(*args)
-        ActiveSupport::Deprecation.warn('permit is depricated in favor of fields')
+        ActiveSupport::Deprecation.warn('permit is deprecated in favor of fields')
         @_permitted_args = args
       end
 
