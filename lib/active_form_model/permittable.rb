@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ActiveFormModel
-  module Permitable
+  module Permittable
     module Prepended
       def initialize(attrs = {})
         permitted_attrs = permit_attrs(attrs)

@@ -3,10 +3,10 @@
 module ActiveFormModel
   module Virtual
     def self.included(base)
-      base.extend Permitable::ClassMethods
+      base.extend Permittable::ClassMethods
       base.extend ClassMethods
-      base.prepend Permitable::Prepended
-      base.include Permitable
+      base.prepend Permittable::Prepended
+      base.include Permittable
       base.include ActiveModel::Model
     end
 

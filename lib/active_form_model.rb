@@ -2,7 +2,7 @@
 
 require 'active_form_model/version'
 require 'active_support/concern'
-require 'active_form_model/permitable'
+require 'active_form_model/permittable'
 
 module ActiveFormModel
   autoload :Virtual, 'active_form_model/virtual'
@@ -12,9 +12,9 @@ module ActiveFormModel
   extend ActiveSupport::Concern
 
   def self.included(base)
-    base.extend Permitable::ClassMethods
-    base.prepend Permitable::Prepended
-    base.include Permitable
+    base.extend Permittable::ClassMethods
+    base.prepend Permittable::Prepended
+    base.include Permittable
   end
 
   module ClassMethods
