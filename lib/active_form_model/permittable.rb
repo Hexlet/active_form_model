@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'active_support/deprecation/reporting'
+
 module ActiveFormModel
   module Permittable
     extend ActiveSupport::Concern
@@ -17,6 +19,7 @@ module ActiveFormModel
       end
 
       def permit(*args)
+        ActiveSupport::Deprecation.warn('permit is depricated in favor of fields')
         @_permitted_args = args
       end
 

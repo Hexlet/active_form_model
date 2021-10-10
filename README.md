@@ -49,7 +49,7 @@ class UserSignUpForm < User
   include ActiveFormModel
 
   # list all the permitted params
-  permit :first_name, :email, :password
+  fields :first_name, :email, :password
 
   # add validation if necessary
   # they will be merged with base class' validation
@@ -81,7 +81,7 @@ If you want to build virtual form that is not tied to any class:
 class SignInForm
   include ActiveFormModel::Virtual
 
-  properties :email, :password
+  fields :email, :password
 
   validates :email, presence: true
   validates :password, presence: true
