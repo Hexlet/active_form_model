@@ -49,7 +49,7 @@ class UserSignUpForm < User
   include ActiveFormModel
 
   # list all the permitted params
-  permit :first_name, :email, :password
+  fields :first_name, :email, :password
 
   # add validation if necessary
   # they will be merged with base class' validation
@@ -71,6 +71,38 @@ In some cases it is necessary to use ActiveRecord object directly without form. 
 ```ruby
 user = User.find(params[:id])
 form = user.becomes(UserSignUpForm)
+```
+
+If you want to build virtual form that is not tied to any class:
+
+```ruby
+# frozen_string_literal: true
+
+class SignInForm
+  include ActiveFormModel::Virtual
+
+  fields :email, :password
+
+  validates :email, presence: true
+  validates :password, presence: true
+  validate :user_exists, :user_can_sign_in
+
+  def user_can_sign_in
+    errors.add(:password, :cannot_sign_in) if password.present? && !user&.valid_password?(password)
+  end
+
+  def user_exists
+    errors.add(:email, :user_does_not_exist_html) if email.present? && !user
+  end
+
+  def user
+    @user ||= User.find_by(email: email)
+  end
+
+  def email=(value)
+    @email = value.downcase
+  end
+end
 ```
 
 ## Development
