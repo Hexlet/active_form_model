@@ -10,7 +10,7 @@ module ActiveFormModel
     class_methods do
       def fields(*attrs)
         send(:attr_accessor, *attrs)
-        super(attrs)
+        permit(*attrs)
       end
     end
   end
