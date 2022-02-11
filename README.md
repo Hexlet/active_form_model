@@ -49,7 +49,7 @@ class UserSignUpForm < User
   include ActiveFormModel
 
   # list all the permitted params
-  fields :first_name, :email, :password
+  permit :first_name, :email, :password
 
   # add validation if necessary
   # they will be merged with base class' validation
