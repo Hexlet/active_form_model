@@ -3,5 +3,5 @@
 class MicrotaskForm < Microtask
   include ActiveFormModel
 
-  fields :valid_attribute
+  permit :valid_attribute
 end
