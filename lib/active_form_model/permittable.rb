@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'active_support/deprecation/reporting'
+require 'active_support/deprecation'
 
 module ActiveFormModel
   module Permittable
@@ -13,14 +13,12 @@ module ActiveFormModel
         super(attrs, &block)
       end
 
-      def fields(*args)
+      def permit(*args)
         @_permitted_args = args
       end
 
-      def permit(*args)
-        ActiveSupport::Deprecation.warn('permit is deprecated in favor of fields')
-        @_permitted_args = args
-      end
+      alias_method :fields, :permit
+      deprecate fields: :permit, deprecator: ActiveSupport::Deprecation.new('0.6.0', 'ActiveFormModel')
 
       def _permitted_args
         @_permitted_args || (superclass.respond_to?(:_permitted_args) && superclass._permitted_args) || []

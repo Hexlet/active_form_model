@@ -2,5 +2,5 @@
 
 class UserForm < User
   include ActiveFormModel
-  fields :valid_attribute
+  permit :valid_attribute
 end
