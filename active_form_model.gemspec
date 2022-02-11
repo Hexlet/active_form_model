@@ -33,4 +33,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency('actionpack', '>= 5')
   spec.add_development_dependency('activemodel', '>= 5')
+  spec.add_development_dependency('activerecord', '>= 5')
+  spec.add_development_dependency('sqlite3')
 end

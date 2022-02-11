@@ -6,18 +6,13 @@ module ActiveFormModel
   module Permittable
     extend ActiveSupport::Concern
 
-    included do
-      prepend Prepended
-    end
-
-    module Prepended
-      def initialize(attrs = {})
-        permitted_attrs = permit_attrs(attrs)
-        super(permitted_attrs)
-      end
-    end
-
     class_methods do
+      def new(attrs = nil, &block)
+        attrs = _permit_attrs(attrs) if attrs
+
+        super(attrs, &block)
+      end
+
       def permit(*args)
         @_permitted_args = args
       end
@@ -27,6 +22,10 @@ module ActiveFormModel
 
       def _permitted_args
         @_permitted_args || (superclass.respond_to?(:_permitted_args) && superclass._permitted_args) || []
+      end
+
+      def _permit_attrs(attrs)
+        attrs.respond_to?(:permit) ? attrs.send(:permit, _permitted_args) : attrs
       end
     end
 
@@ -48,7 +47,7 @@ module ActiveFormModel
     private
 
     def permit_attrs(attrs)
-      attrs.respond_to?(:permit) ? attrs.send(:permit, self.class._permitted_args) : attrs
+      self.class._permit_attrs(attrs)
     end
   end
 end
