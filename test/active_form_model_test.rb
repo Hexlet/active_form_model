@@ -28,6 +28,12 @@ class ActiveFormModelTest < Minitest::Test
     assert { @form.valid_attribute == :one }
   end
 
+  def test_permitted_attrs_for_inhereted_form
+    @form = UnsafeUserForm.new(@params)
+    assert { @form.valid_attribute == :one }
+    assert { @form.invalid_attribute == :two }
+  end
+
   # def test_permitted_attrs_for_update!
   #   @form = UserForm.new
   #   @form.update!(@params)
