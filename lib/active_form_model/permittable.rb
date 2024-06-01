@@ -15,7 +15,7 @@ module ActiveFormModel
       def new(attrs = nil, &block)
         attrs = _permit_attrs(attrs) if attrs
 
-        super(attrs, &block)
+        super
       end
 
       def permit(*args)

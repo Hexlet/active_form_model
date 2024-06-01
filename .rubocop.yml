@@ -14,7 +14,8 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.7
+  Exclude:
+    - 'lib/generators/**/*.rb'
 
 Style/Documentation:
   Enabled: false

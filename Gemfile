@@ -11,6 +11,10 @@ gem 'rake'
 
 gem 'rubocop'
 
+gem 'actionpack'
+gem 'activemodel'
+gem 'activerecord'
 gem 'minitest-power_assert'
 gem 'rubocop-minitest'
 gem 'rubocop-rake'
+gem 'sqlite3', '~> 1.7'

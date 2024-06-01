@@ -12,12 +12,13 @@ Gem::Specification.new do |spec|
   spec.description   = 'Based on inheritance'
   spec.homepage      = 'https://github.com/Hexlet/active_form_model'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.0.0')
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/Hexlet/form-model.git'
+  spec.metadata['rubygems_mfa_required'] = 'true'
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
@@ -30,9 +31,4 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency('activesupport', '>= 3')
-
-  spec.add_development_dependency('actionpack', '>= 5')
-  spec.add_development_dependency('activemodel', '>= 5')
-  spec.add_development_dependency('activerecord', '>= 5')
-  spec.add_development_dependency('sqlite3')
 end
