@@ -17,4 +17,5 @@ gem 'activerecord'
 gem 'minitest-power_assert'
 gem 'rubocop-minitest'
 gem 'rubocop-rake'
-gem 'sqlite3', '~> 1.7'
+gem 'ruby-lsp', require: false
+gem 'sqlite3'
