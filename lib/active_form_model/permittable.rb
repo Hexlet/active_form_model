@@ -9,6 +9,7 @@ module ActiveFormModel
 
     included do
       class_attribute(:_permitted_args, instance_predicate: false, default: [])
+      class_attribute(:_skipped_args, instance_predicate: false, default: [])
     end
 
     class_methods do
@@ -22,11 +23,24 @@ module ActiveFormModel
         self._permitted_args = _permitted_args | args
       end
 
+      def skip_if_empty(*args)
+        self._skipped_args = args
+      end
+
       alias_method :fields, :permit
       deprecate fields: :permit, deprecator: ActiveSupport::Deprecation.new('0.6.0', 'ActiveFormModel')
 
       def _permit_attrs(attrs)
-        attrs.respond_to?(:permit) ? attrs.send(:permit, _permitted_args) : attrs
+        permitted = attrs.respond_to?(:permit) ? attrs.send(:permit, _permitted_args) : attrs
+        _skipped_args.each do |key|
+          value = permitted[key.to_s] || permitted[key.to_sym]
+          if value.blank?
+            permitted.delete(key.to_s)
+            permitted.delete(key.to_sym)
+          end
+        end
+
+        permitted
       end
     end
 

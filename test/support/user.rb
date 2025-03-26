@@ -2,7 +2,7 @@
 
 class User
   include ActiveModel::Model
-  attr_accessor :valid_attribute, :invalid_attribute, :locale
+  attr_accessor :valid_attribute, :invalid_attribute, :locale, :file
 
   def update(*args)
     assign_attributes(*args)

@@ -21,6 +21,18 @@ class ActiveFormModelTest < Minitest::Test
     assert { @form.valid_attribute == :one }
   end
 
+  def test_skipping_for_blank
+    @form = UserForm.new(file: 'ehu')
+    @form.update(@params.merge(file: ''))
+    assert { @form.file == 'ehu' }
+  end
+
+  def test_skipping_for_non_blank
+    @form = UserForm.new(file: 'ehu')
+    @form.update(@params.merge(file: 'wow'))
+    assert { @form.file == 'wow' }
+  end
+
   def test_permitted_attrs_for_assign_attributes
     @form = UserForm.new
     @form.assign_attributes(@params)
