@@ -2,6 +2,7 @@
 
 class UserForm < User
   include ActiveFormModel
+
   permit :valid_attribute, :file
 
   skip_if_empty :file

@@ -2,5 +2,6 @@
 
 class AdminForm < User
   include ActiveFormModel
+
   permit :valid_attribute
 end

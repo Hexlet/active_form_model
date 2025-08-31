@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class User
-  include ActiveModel::Model
+  include ActiveModel::API
+
   attr_accessor :valid_attribute, :invalid_attribute, :locale, :file
 
   def update(*args)
     assign_attributes(*args)
-    true
   end
 
   def initialize(attrs = nil)

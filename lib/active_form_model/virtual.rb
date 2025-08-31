@@ -5,7 +5,7 @@ module ActiveFormModel
     extend ActiveSupport::Concern
 
     include Permittable
-    include ActiveModel::Model
+    include ActiveModel::API
 
     class_methods do
       def fields(*attrs)
