@@ -11,7 +11,7 @@ updates:
         update-types: [minor, patch]
       actions-major:
         update-types: [major]
-  - package-ecosystem: bundler
+  - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
