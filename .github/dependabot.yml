@@ -1,4 +1,3 @@
----
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -11,13 +10,14 @@ updates:
         update-types: [minor, patch]
       actions-major:
         update-types: [major]
+
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
-    labels: [dependencies, automated, ruby]
+    labels: [dependencies, automated, npm]
     groups:
-      bundler-minor-patch:
+      npm-minor-patch:
         update-types: [minor, patch]
-      bundler-major:
+      npm-major:
         update-types: [major]
