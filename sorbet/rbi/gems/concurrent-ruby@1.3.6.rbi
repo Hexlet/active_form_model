@@ -250,7 +250,7 @@ class Concurrent::Map < ::Concurrent::Collection::MriMapBackend
   # @yieldparam key [Object]
   # @yieldparam value [Object]
   #
-  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/map.rb#274
+  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/map.rb#279
   def each; end
 
   # Iterates over each key.
@@ -308,8 +308,8 @@ class Concurrent::Map < ::Concurrent::Collection::MriMapBackend
   #   between the fetch operation and yielding to the block. Additionally,
   #   this method does not support recursion. This is due to internal
   #   constraints that are very unlikely to change in the near future.
-  # @param key [Object]
   # @param default_value [Object]
+  # @param key [Object]
   # @raise [KeyError] when key is missing and no default_value is provided
   # @return [Object] the value or default value
   # @yield default value for a key
@@ -324,8 +324,8 @@ class Concurrent::Map < ::Concurrent::Collection::MriMapBackend
   # therefore not atomic. The store can overwrite other concurrently
   # stored value.
   #
-  # @param key [Object]
   # @param default_value [Object]
+  # @param key [Object]
   # @return [Object] the value or default value
   # @yield default value for a key
   # @yieldparam key [Object]
@@ -339,7 +339,7 @@ class Concurrent::Map < ::Concurrent::Collection::MriMapBackend
   # @param key [Object]
   # @return [Object] the value
   #
-  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/collection/map/non_concurrent_map_backend.rb#21
+  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/map.rb#162
   def get(key); end
 
   # source://concurrent-ruby//lib/concurrent-ruby/concurrent/map.rb#321
@@ -374,7 +374,7 @@ class Concurrent::Map < ::Concurrent::Collection::MriMapBackend
   # @param value [Object]
   # @return [Object] the new value
   #
-  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/collection/map/mri_map_backend.rb#17
+  # source://concurrent-ruby//lib/concurrent-ruby/concurrent/map.rb#163
   def put(key, value); end
 
   # Insert value into map with key if key is absent in one atomic step.

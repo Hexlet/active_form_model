@@ -878,11 +878,11 @@ module ActiveSupport::Deprecation::Reporting
 
   # @return [Boolean]
   #
-  # source://activesupport//lib/active_support/deprecation/reporting.rb#155
+  # source://activesupport//lib/active_support/deprecation/reporting.rb#157
   def ignored_callstack?(path); end
 end
 
-# source://activesupport//lib/active_support/deprecation/reporting.rb#153
+# source://activesupport//lib/active_support/deprecation/reporting.rb#154
 ActiveSupport::Deprecation::Reporting::LIB_DIR = T.let(T.unsafe(nil), String)
 
 # source://activesupport//lib/active_support/deprecation/reporting.rb#152
@@ -1213,7 +1213,7 @@ class ActiveSupport::Notifications::Event
   # source://activesupport//lib/active_support/notifications/instrumenter.rb#182
   def gc_time; end
 
-  # Returns the idle time time (in milliseconds) passed between the call to
+  # Returns the idle time (in milliseconds) passed between the call to
   # #start! and the call to #finish!.
   #
   # source://activesupport//lib/active_support/notifications/instrumenter.rb#169
@@ -1274,104 +1274,107 @@ end
 #
 # This class is thread safe. All methods are reentrant.
 #
-# source://activesupport//lib/active_support/notifications/fanout.rb#49
+# source://activesupport//lib/active_support/notifications/fanout.rb#55
 class ActiveSupport::Notifications::Fanout
   include ::ActiveSupport::Notifications::FanoutIteration
 
   # @return [Fanout] a new instance of Fanout
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#50
+  # source://activesupport//lib/active_support/notifications/fanout.rb#56
   def initialize; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#297
+  # source://activesupport//lib/active_support/notifications/fanout.rb#319
   def all_listeners_for(name); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#272
+  # source://activesupport//lib/active_support/notifications/fanout.rb#286
   def build_handle(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#101
+  # source://activesupport//lib/active_support/notifications/fanout.rb#106
   def clear_cache(key = T.unsafe(nil)); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#283
+  # source://activesupport//lib/active_support/notifications/fanout.rb#305
   def finish(name, id, payload, listeners = T.unsafe(nil)); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#187
+  # source://activesupport//lib/active_support/notifications/fanout.rb#190
+  def group_listeners(listeners); end
+
+  # source://activesupport//lib/active_support/notifications/fanout.rb#196
   def groups_for(name); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#59
+  # source://activesupport//lib/active_support/notifications/fanout.rb#64
   def inspect; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#306
+  # source://activesupport//lib/active_support/notifications/fanout.rb#328
   def listeners_for(name); end
 
   # @return [Boolean]
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#310
+  # source://activesupport//lib/active_support/notifications/fanout.rb#332
   def listening?(name); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#289
-  def publish(name, *args); end
+  # source://activesupport//lib/active_support/notifications/fanout.rb#311
+  def publish(name, *_arg1, **_arg2, &_arg3); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#293
+  # source://activesupport//lib/active_support/notifications/fanout.rb#315
   def publish_event(event); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#276
+  # source://activesupport//lib/active_support/notifications/fanout.rb#298
   def start(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#64
+  # source://activesupport//lib/active_support/notifications/fanout.rb#69
   def subscribe(pattern = T.unsafe(nil), callable = T.unsafe(nil), monotonic: T.unsafe(nil), &block); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#81
+  # source://activesupport//lib/active_support/notifications/fanout.rb#86
   def unsubscribe(subscriber_or_name); end
 
   # This is a sync queue, so there is no waiting.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#315
+  # source://activesupport//lib/active_support/notifications/fanout.rb#337
   def wait; end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#113
+# source://activesupport//lib/active_support/notifications/fanout.rb#116
 class ActiveSupport::Notifications::Fanout::BaseGroup
   include ::ActiveSupport::Notifications::FanoutIteration
 
   # @return [BaseGroup] a new instance of BaseGroup
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#116
+  # source://activesupport//lib/active_support/notifications/fanout.rb#119
   def initialize(listeners, name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#120
+  # source://activesupport//lib/active_support/notifications/fanout.rb#123
   def each(&block); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#125
+# source://activesupport//lib/active_support/notifications/fanout.rb#128
 class ActiveSupport::Notifications::Fanout::BaseTimeGroup < ::ActiveSupport::Notifications::Fanout::BaseGroup
-  # source://activesupport//lib/active_support/notifications/fanout.rb#130
+  # source://activesupport//lib/active_support/notifications/fanout.rb#133
   def finish(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#126
+  # source://activesupport//lib/active_support/notifications/fanout.rb#129
   def start(name, id, payload); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#166
+# source://activesupport//lib/active_support/notifications/fanout.rb#169
 class ActiveSupport::Notifications::Fanout::EventObjectGroup < ::ActiveSupport::Notifications::Fanout::BaseGroup
-  # source://activesupport//lib/active_support/notifications/fanout.rb#172
+  # source://activesupport//lib/active_support/notifications/fanout.rb#175
   def finish(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#167
+  # source://activesupport//lib/active_support/notifications/fanout.rb#170
   def start(name, id, payload); end
 
   private
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#182
+  # source://activesupport//lib/active_support/notifications/fanout.rb#185
   def build_event(name, id, payload); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#152
+# source://activesupport//lib/active_support/notifications/fanout.rb#155
 class ActiveSupport::Notifications::Fanout::EventedGroup < ::ActiveSupport::Notifications::Fanout::BaseGroup
-  # source://activesupport//lib/active_support/notifications/fanout.rb#159
+  # source://activesupport//lib/active_support/notifications/fanout.rb#162
   def finish(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#153
+  # source://activesupport//lib/active_support/notifications/fanout.rb#156
   def start(name, id, payload); end
 end
 
@@ -1390,158 +1393,172 @@ end
 #     handle.finish
 #   end
 #
-# source://activesupport//lib/active_support/notifications/fanout.rb#227
+# source://activesupport//lib/active_support/notifications/fanout.rb#230
 class ActiveSupport::Notifications::Fanout::Handle
   include ::ActiveSupport::Notifications::FanoutIteration
 
   # @return [Handle] a new instance of Handle
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#230
-  def initialize(notifier, name, id, payload); end
+  # source://activesupport//lib/active_support/notifications/fanout.rb#233
+  def initialize(notifier, name, id, groups, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#249
+  # source://activesupport//lib/active_support/notifications/fanout.rb#250
   def finish; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#253
+  # source://activesupport//lib/active_support/notifications/fanout.rb#254
   def finish_with_values(name, id, payload); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#240
+  # source://activesupport//lib/active_support/notifications/fanout.rb#241
   def start; end
 
   private
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#263
+  # source://activesupport//lib/active_support/notifications/fanout.rb#264
   def ensure_state!(expected); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#138
+# source://activesupport//lib/active_support/notifications/fanout.rb#141
 class ActiveSupport::Notifications::Fanout::MonotonicTimedGroup < ::ActiveSupport::Notifications::Fanout::BaseTimeGroup
   private
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#140
+  # source://activesupport//lib/active_support/notifications/fanout.rb#143
   def now; end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#318
+# source://activesupport//lib/active_support/notifications/fanout.rb#271
+module ActiveSupport::Notifications::Fanout::NullHandle
+  extend ::ActiveSupport::Notifications::Fanout::NullHandle
+
+  # source://activesupport//lib/active_support/notifications/fanout.rb#277
+  def finish; end
+
+  # source://activesupport//lib/active_support/notifications/fanout.rb#280
+  def finish_with_values(_name, _id, _payload); end
+
+  # source://activesupport//lib/active_support/notifications/fanout.rb#274
+  def start; end
+end
+
+# source://activesupport//lib/active_support/notifications/fanout.rb#340
 module ActiveSupport::Notifications::Fanout::Subscribers
   class << self
-    # source://activesupport//lib/active_support/notifications/fanout.rb#319
+    # source://activesupport//lib/active_support/notifications/fanout.rb#341
     def new(pattern, listener, monotonic); end
   end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#433
+# source://activesupport//lib/active_support/notifications/fanout.rb#455
 class ActiveSupport::Notifications::Fanout::Subscribers::EventObject < ::ActiveSupport::Notifications::Fanout::Subscribers::Evented
-  # source://activesupport//lib/active_support/notifications/fanout.rb#434
+  # source://activesupport//lib/active_support/notifications/fanout.rb#456
   def group_class; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#438
+  # source://activesupport//lib/active_support/notifications/fanout.rb#460
   def publish_event(event); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#375
+# source://activesupport//lib/active_support/notifications/fanout.rb#397
 class ActiveSupport::Notifications::Fanout::Subscribers::Evented
   # @return [Evented] a new instance of Evented
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#378
+  # source://activesupport//lib/active_support/notifications/fanout.rb#400
   def initialize(pattern, delegate); end
 
   # Returns the value of attribute delegate.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#376
+  # source://activesupport//lib/active_support/notifications/fanout.rb#398
   def delegate; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#386
+  # source://activesupport//lib/active_support/notifications/fanout.rb#408
   def group_class; end
 
   # Returns the value of attribute pattern.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#376
+  # source://activesupport//lib/active_support/notifications/fanout.rb#398
   def pattern; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#390
-  def publish(name, *args); end
+  # source://activesupport//lib/active_support/notifications/fanout.rb#412
+  def publish(*_arg0, **_arg1, &_arg2); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#396
+  # source://activesupport//lib/active_support/notifications/fanout.rb#418
   def publish_event(event); end
 
   # Returns the value of attribute silenceable.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#376
+  # source://activesupport//lib/active_support/notifications/fanout.rb#398
   def silenceable; end
 
   # @return [Boolean]
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#404
+  # source://activesupport//lib/active_support/notifications/fanout.rb#426
   def silenced?(name); end
 
   # @return [Boolean]
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#408
+  # source://activesupport//lib/active_support/notifications/fanout.rb#430
   def subscribed_to?(name); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#412
+  # source://activesupport//lib/active_support/notifications/fanout.rb#434
   def unsubscribe!(name); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#338
+# source://activesupport//lib/active_support/notifications/fanout.rb#360
 class ActiveSupport::Notifications::Fanout::Subscribers::Matcher
   # @return [Matcher] a new instance of Matcher
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#351
+  # source://activesupport//lib/active_support/notifications/fanout.rb#373
   def initialize(pattern); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#360
+  # source://activesupport//lib/active_support/notifications/fanout.rb#382
   def ===(name); end
 
   # Returns the value of attribute exclusions.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#339
+  # source://activesupport//lib/active_support/notifications/fanout.rb#361
   def exclusions; end
 
   # Returns the value of attribute pattern.
   #
-  # source://activesupport//lib/active_support/notifications/fanout.rb#339
+  # source://activesupport//lib/active_support/notifications/fanout.rb#361
   def pattern; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#356
+  # source://activesupport//lib/active_support/notifications/fanout.rb#378
   def unsubscribe!(name); end
 
   class << self
-    # source://activesupport//lib/active_support/notifications/fanout.rb#341
+    # source://activesupport//lib/active_support/notifications/fanout.rb#363
     def wrap(pattern); end
   end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#364
+# source://activesupport//lib/active_support/notifications/fanout.rb#386
 class ActiveSupport::Notifications::Fanout::Subscribers::Matcher::AllMessages
-  # source://activesupport//lib/active_support/notifications/fanout.rb#365
+  # source://activesupport//lib/active_support/notifications/fanout.rb#387
   def ===(name); end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#369
+  # source://activesupport//lib/active_support/notifications/fanout.rb#391
   def unsubscribe!(*_arg0); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#427
+# source://activesupport//lib/active_support/notifications/fanout.rb#449
 class ActiveSupport::Notifications::Fanout::Subscribers::MonotonicTimed < ::ActiveSupport::Notifications::Fanout::Subscribers::Timed
-  # source://activesupport//lib/active_support/notifications/fanout.rb#428
+  # source://activesupport//lib/active_support/notifications/fanout.rb#450
   def group_class; end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#417
+# source://activesupport//lib/active_support/notifications/fanout.rb#439
 class ActiveSupport::Notifications::Fanout::Subscribers::Timed < ::ActiveSupport::Notifications::Fanout::Subscribers::Evented
-  # source://activesupport//lib/active_support/notifications/fanout.rb#418
+  # source://activesupport//lib/active_support/notifications/fanout.rb#440
   def group_class; end
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#422
-  def publish(name, *args); end
+  # source://activesupport//lib/active_support/notifications/fanout.rb#444
+  def publish(*_arg0, **_arg1, &_arg2); end
 end
 
-# source://activesupport//lib/active_support/notifications/fanout.rb#145
+# source://activesupport//lib/active_support/notifications/fanout.rb#148
 class ActiveSupport::Notifications::Fanout::TimedGroup < ::ActiveSupport::Notifications::Fanout::BaseTimeGroup
   private
 
-  # source://activesupport//lib/active_support/notifications/fanout.rb#147
+  # source://activesupport//lib/active_support/notifications/fanout.rb#150
   def now; end
 end
 
@@ -1550,7 +1567,7 @@ module ActiveSupport::Notifications::FanoutIteration
   private
 
   # source://activesupport//lib/active_support/notifications/fanout.rb#20
-  def iterate_guarding_exceptions(collection); end
+  def iterate_guarding_exceptions(collection, &block); end
 end
 
 # source://activesupport//lib/active_support/notifications/fanout.rb#8
@@ -2105,14 +2122,14 @@ class NilClass
   #   @person.try(:children).try(:first).try(:name)
   #
   # source://activesupport//lib/active_support/core_ext/object/try.rb#148
-  def try(*_arg0); end
+  def try(*_arg0, &_arg1); end
 
   # Calling +try!+ on +nil+ always returns +nil+.
   #
   #   nil.try!(:name) # => nil
   #
   # source://activesupport//lib/active_support/core_ext/object/try.rb#155
-  def try!(*_arg0); end
+  def try!(*_arg0, &_arg1); end
 end
 
 # --

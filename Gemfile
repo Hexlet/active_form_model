@@ -19,4 +19,4 @@ gem 'rubocop-minitest'
 gem 'rubocop-rake'
 gem 'ruby-lsp', require: false
 gem 'sqlite3'
-gem 'tapioca'
+gem 'tapioca', '~> 0.17.0'

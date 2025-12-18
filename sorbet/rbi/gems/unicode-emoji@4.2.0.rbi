@@ -36,13 +36,13 @@ end
 
 # Last codepoint of tag-based subdivision flags
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#31
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#32
 Unicode::Emoji::CANCEL_TAG = T.let(T.unsafe(nil), Integer)
 
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#7
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#8
 Unicode::Emoji::CLDR_VERSION = T.let(T.unsafe(nil), String)
 
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#8
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#9
 Unicode::Emoji::DATA_DIRECTORY = T.let(T.unsafe(nil), String)
 
 # The current list of codepoints with the "Emoji" property
@@ -66,7 +66,7 @@ Unicode::Emoji::EMOJI_KEYCAPS = T.let(T.unsafe(nil), Array)
 
 # Combining Enclosing Keycap character
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#37
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#38
 Unicode::Emoji::EMOJI_KEYCAP_SUFFIX = T.let(T.unsafe(nil), Integer)
 
 # The current list of codepoints with the "Emoji_Modifier" property
@@ -92,12 +92,12 @@ Unicode::Emoji::EMOJI_PRESENTATION = T.let(T.unsafe(nil), Array)
 
 # First codepoint of tag-based subdivision flags
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#28
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#29
 Unicode::Emoji::EMOJI_TAG_BASE_FLAG = T.let(T.unsafe(nil), Integer)
 
 # Variation Selector 16 (VS16), enables emoji presentation mode for preceding codepoint
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#22
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#23
 Unicode::Emoji::EMOJI_VARIATION_SELECTOR = T.let(T.unsafe(nil), Integer)
 
 # source://unicode-emoji//lib/unicode/emoji/constants.rb#6
@@ -118,7 +118,7 @@ Unicode::Emoji::EXTENDED_PICTOGRAPHIC_NO_EMOJI = T.let(T.unsafe(nil), Array)
 # source://unicode-emoji//lib/unicode/emoji/index.rb#11
 Unicode::Emoji::INDEX = T.let(T.unsafe(nil), Hash)
 
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#9
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#10
 Unicode::Emoji::INDEX_FILENAME = T.let(T.unsafe(nil), String)
 
 # Contains an ordered and group list of all currently recommended Emoji (RGI/FQE)
@@ -133,7 +133,7 @@ Unicode::Emoji::LIST_REMOVED_KEYS = T.let(T.unsafe(nil), Array)
 
 # Unicode properties, see https://www.unicode.org/Public/16.0.0/ucd/emoji/emoji-data.txt
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#12
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#13
 Unicode::Emoji::PROPERTY_NAMES = T.let(T.unsafe(nil), Hash)
 
 # The list RGI tag sequence flags
@@ -208,12 +208,12 @@ Unicode::Emoji::REGEX_WELL_FORMED_INCLUDE_TEXT = T.let(T.unsafe(nil), Regexp)
 
 # Two regional indicators make up a region
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#43
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#44
 Unicode::Emoji::REGIONAL_INDICATORS = T.let(T.unsafe(nil), Array)
 
 # Tags characters allowed in tag-based subdivision flags
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#34
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#35
 Unicode::Emoji::SPEC_TAGS = T.let(T.unsafe(nil), Array)
 
 # The current list of codepoints with the "Emoji" property that lack the "Emoji Presentation" property
@@ -223,8 +223,11 @@ Unicode::Emoji::TEXT_PRESENTATION = T.let(T.unsafe(nil), Array)
 
 # Variation Selector 15 (VS15), enables text presentation mode for preceding codepoint
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#25
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#26
 Unicode::Emoji::TEXT_VARIATION_SELECTOR = T.let(T.unsafe(nil), Integer)
+
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#7
+Unicode::Emoji::UNICODE_VERSION = T.let(T.unsafe(nil), String)
 
 # The list of valid regions
 #
@@ -242,10 +245,10 @@ Unicode::Emoji::VERSION = T.let(T.unsafe(nil), String)
 # The current list of Emoji components that should have a visual representation
 # Currently skin tone modifiers + hair components
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#47
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#48
 Unicode::Emoji::VISUAL_COMPONENT = T.let(T.unsafe(nil), Array)
 
 # Zero-width-joiner to enable combination of multiple Emoji in a sequence
 #
-# source://unicode-emoji//lib/unicode/emoji/constants.rb#40
+# source://unicode-emoji//lib/unicode/emoji/constants.rb#41
 Unicode::Emoji::ZWJ = T.let(T.unsafe(nil), Integer)

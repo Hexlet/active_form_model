@@ -5,15 +5,15 @@
 # Please instead update this file by running `bin/tapioca gem power_assert`.
 
 
-# source://power_assert//lib/power_assert/configuration.rb#1
+# source://power_assert//lib/power_assert/parser.rb#3
 module PowerAssert
   class << self
-    # source://power_assert//lib/power_assert.rb#50
+    # source://power_assert//lib/power_assert.rb#35
     def app_caller_locations; end
 
     # @return [Boolean]
     #
-    # source://power_assert//lib/power_assert.rb#54
+    # source://power_assert//lib/power_assert.rb#39
     def app_context?; end
 
     # source://power_assert//lib/power_assert/configuration.rb#3
@@ -24,46 +24,21 @@ module PowerAssert
     # source://power_assert//lib/power_assert/configuration.rb#7
     def configure; end
 
-    # @yield [BlockContext.new(assertion_proc_or_source, assertion_method, source_binding)]
+    # @yield [Context.new(assertion_proc_or_source, assertion_method, source_binding)]
     #
-    # source://power_assert//lib/power_assert.rb#32
+    # source://power_assert//lib/power_assert.rb#30
     def start(assertion_proc_or_source, assertion_method: T.unsafe(nil), source_binding: T.unsafe(nil)); end
-
-    # source://power_assert//lib/power_assert.rb#39
-    def trace(frame); end
 
     private
 
-    # source://power_assert//lib/power_assert.rb#84
+    # source://power_assert//lib/power_assert.rb#55
     def clear_global_method_cache; end
 
     # @return [Boolean]
     #
-    # source://power_assert//lib/power_assert.rb#61
+    # source://power_assert//lib/power_assert.rb#46
     def internal_file?(file); end
-
-    # source://power_assert//lib/power_assert.rb#76
-    def lib_dir(obj, mid, depth); end
-
-    # source://power_assert//lib/power_assert.rb#69
-    def setup_internal_lib_dir(lib, mid, depth, lib_obj = T.unsafe(nil)); end
   end
-end
-
-# source://power_assert//lib/power_assert/context.rb#161
-class PowerAssert::BlockContext < ::PowerAssert::Context
-  # @return [BlockContext] a new instance of BlockContext
-  #
-  # source://power_assert//lib/power_assert/context.rb#162
-  def initialize(assertion_proc_or_source, assertion_method, source_binding); end
-
-  # source://power_assert//lib/power_assert/context.rb#188
-  def yield; end
-
-  private
-
-  # source://power_assert//lib/power_assert/context.rb#195
-  def invoke_yield; end
 end
 
 # source://power_assert//lib/power_assert/configuration.rb#12
@@ -98,40 +73,46 @@ class PowerAssert::Context
   # @return [Context] a new instance of Context
   #
   # source://power_assert//lib/power_assert/context.rb#10
-  def initialize(base_caller_length); end
+  def initialize(assertion_proc_or_source, assertion_method, source_binding); end
 
-  # source://power_assert//lib/power_assert/context.rb#43
+  # source://power_assert//lib/power_assert/context.rb#66
   def message; end
 
-  # source://power_assert//lib/power_assert/context.rb#48
+  # source://power_assert//lib/power_assert/context.rb#71
   def message_proc; end
+
+  # source://power_assert//lib/power_assert/context.rb#75
+  def yield; end
 
   private
 
-  # source://power_assert//lib/power_assert/context.rb#58
+  # source://power_assert//lib/power_assert/context.rb#94
   def build_assertion_message(parser, return_values); end
 
-  # source://power_assert//lib/power_assert/context.rb#149
+  # source://power_assert//lib/power_assert/context.rb#185
   def column2display_offset(str); end
 
-  # source://power_assert//lib/power_assert/context.rb#104
+  # source://power_assert//lib/power_assert/context.rb#140
   def detect_path(parser, return_values); end
 
-  # source://power_assert//lib/power_assert/context.rb#138
+  # source://power_assert//lib/power_assert/context.rb#174
   def encoding_safe_rstrip(str); end
 
-  # source://power_assert//lib/power_assert/context.rb#134
+  # source://power_assert//lib/power_assert/context.rb#170
   def enum_count_by(enum, &blk); end
 
-  # source://power_assert//lib/power_assert/context.rb#124
+  # source://power_assert//lib/power_assert/context.rb#160
   def find_all_identified_calls(return_values, path); end
 
   # @return [Boolean]
   #
-  # source://power_assert//lib/power_assert/context.rb#54
+  # source://power_assert//lib/power_assert/context.rb#90
   def fired?; end
 
-  # source://power_assert//lib/power_assert/context.rb#119
+  # source://power_assert//lib/power_assert/context.rb#82
+  def invoke_yield; end
+
+  # source://power_assert//lib/power_assert/context.rb#155
   def uniq_calls(paths); end
 end
 
@@ -140,71 +121,100 @@ class PowerAssert::Context::Value < ::Struct
   # Returns the value of attribute column
   #
   # @return [Object] the current value of column
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def column; end
 
   # Sets the attribute column
   #
   # @param value [Object] the value to set the attribute column to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def column=(_); end
 
   # Returns the value of attribute display_offset
   #
   # @return [Object] the current value of display_offset
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def display_offset; end
 
   # Sets the attribute display_offset
   #
   # @param value [Object] the value to set the attribute display_offset to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def display_offset=(_); end
 
   # Returns the value of attribute lineno
   #
   # @return [Object] the current value of lineno
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def lineno; end
 
   # Sets the attribute lineno
   #
   # @param value [Object] the value to set the attribute lineno to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def lineno=(_); end
 
   # Returns the value of attribute name
   #
   # @return [Object] the current value of name
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def name; end
 
   # Sets the attribute name
   #
   # @param value [Object] the value to set the attribute name to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def name=(_); end
 
   # Returns the value of attribute value
   #
   # @return [Object] the current value of value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def value; end
 
   # Sets the attribute value
   #
   # @param value [Object] the value to set the attribute value to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/context.rb#8
   def value=(_); end
 
   class << self
+    # source://power_assert//lib/power_assert/context.rb#8
     def [](*_arg0); end
+
+    # source://power_assert//lib/power_assert/context.rb#8
     def inspect; end
+
+    # source://power_assert//lib/power_assert/context.rb#8
     def keyword_init?; end
+
+    # source://power_assert//lib/power_assert/context.rb#8
     def members; end
+
+    # source://power_assert//lib/power_assert/context.rb#8
     def new(*_arg0); end
   end
 end
 
-# source://power_assert//lib/power_assert.rb#90
+# source://power_assert//lib/power_assert.rb#60
 module PowerAssert::Empty; end
 
-# source://power_assert//lib/power_assert.rb#28
+# source://power_assert//lib/power_assert.rb#26
 PowerAssert::INTERNAL_LIB_DIRS = T.let(T.unsafe(nil), Hash)
 
 # source://power_assert//lib/power_assert/inspector.rb#8
@@ -229,7 +239,7 @@ class PowerAssert::Inspector
   def inspect; end
 end
 
-# source://power_assert//lib/power_assert.rb#27
+# source://power_assert//lib/power_assert.rb#25
 PowerAssert::POWER_ASSERT_LIB_DIR = T.let(T.unsafe(nil), String)
 
 # source://power_assert//lib/power_assert/parser.rb#4
@@ -270,7 +280,7 @@ class PowerAssert::Parser
 
   private
 
-  # source://power_assert//lib/power_assert/parser.rb#221
+  # source://power_assert//lib/power_assert/parser.rb#186
   def collect_paths(idents, prefixes = T.unsafe(nil), index = T.unsafe(nil)); end
 
   # Returns idents as graph structure.
@@ -279,16 +289,16 @@ class PowerAssert::Parser
   #  extract_idents(Ripper.sexp('a&.b(c).d')) #=> a--+        +--d
   #                                                  +--------+
   #
-  # source://power_assert//lib/power_assert/parser.rb#70
+  # source://power_assert//lib/power_assert/parser.rb#67
   def extract_idents(sexp); end
 
-  # source://power_assert//lib/power_assert/parser.rb#200
+  # source://power_assert//lib/power_assert/parser.rb#165
   def handle_columnless_ident(left_idents, mid, right_idents, with_safe_op = T.unsafe(nil)); end
 
-  # source://power_assert//lib/power_assert/parser.rb#48
+  # source://power_assert//lib/power_assert/parser.rb#45
   def slice_expression(str); end
 
-  # source://power_assert//lib/power_assert/parser.rb#184
+  # source://power_assert//lib/power_assert/parser.rb#149
   def str_indices(str, re, offset, limit); end
 
   # @return [Boolean]
@@ -297,26 +307,26 @@ class PowerAssert::Parser
   def valid_syntax?(str); end
 end
 
-# source://power_assert//lib/power_assert/parser.rb#61
+# source://power_assert//lib/power_assert/parser.rb#58
 PowerAssert::Parser::AND_OR_OPS = T.let(T.unsafe(nil), Array)
 
-# source://power_assert//lib/power_assert/parser.rb#58
+# source://power_assert//lib/power_assert/parser.rb#55
 class PowerAssert::Parser::Branch < ::Array; end
 
-# source://power_assert//lib/power_assert/parser.rb#248
+# source://power_assert//lib/power_assert/parser.rb#213
 PowerAssert::Parser::DUMMY = T.let(T.unsafe(nil), PowerAssert::Parser::DummyParser)
 
-# source://power_assert//lib/power_assert/parser.rb#235
+# source://power_assert//lib/power_assert/parser.rb#200
 class PowerAssert::Parser::DummyParser < ::PowerAssert::Parser
   # @return [DummyParser] a new instance of DummyParser
   #
-  # source://power_assert//lib/power_assert/parser.rb#236
+  # source://power_assert//lib/power_assert/parser.rb#201
   def initialize; end
 
-  # source://power_assert//lib/power_assert/parser.rb#244
+  # source://power_assert//lib/power_assert/parser.rb#209
   def call_paths; end
 
-  # source://power_assert//lib/power_assert/parser.rb#240
+  # source://power_assert//lib/power_assert/parser.rb#205
   def idents; end
 end
 
@@ -325,46 +335,67 @@ class PowerAssert::Parser::Ident < ::Struct
   # Returns the value of attribute column
   #
   # @return [Object] the current value of column
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def column; end
 
   # Sets the attribute column
   #
   # @param value [Object] the value to set the attribute column to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def column=(_); end
 
   # Returns the value of attribute name
   #
   # @return [Object] the current value of name
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def name; end
 
   # Sets the attribute name
   #
   # @param value [Object] the value to set the attribute name to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def name=(_); end
 
   # Returns the value of attribute type
   #
   # @return [Object] the current value of type
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def type; end
 
   # Sets the attribute type
   #
   # @param value [Object] the value to set the attribute type to.
   # @return [Object] the newly set value
+  #
+  # source://power_assert//lib/power_assert/parser.rb#5
   def type=(_); end
 
   class << self
+    # source://power_assert//lib/power_assert/parser.rb#5
     def [](*_arg0); end
+
+    # source://power_assert//lib/power_assert/parser.rb#5
     def inspect; end
+
+    # source://power_assert//lib/power_assert/parser.rb#5
     def keyword_init?; end
+
+    # source://power_assert//lib/power_assert/parser.rb#5
     def members; end
+
+    # source://power_assert//lib/power_assert/parser.rb#5
     def new(*_arg0); end
   end
 end
 
-# source://power_assert//lib/power_assert/parser.rb#193
+# source://power_assert//lib/power_assert/parser.rb#158
 PowerAssert::Parser::MID2SRCTXT = T.let(T.unsafe(nil), Hash)
 
 # source://power_assert//lib/power_assert/inspector.rb#19
@@ -376,25 +407,6 @@ class PowerAssert::SafeInspectable
 
   # source://power_assert//lib/power_assert/inspector.rb#24
   def inspect; end
-end
-
-# source://power_assert//lib/power_assert/context.rb#205
-class PowerAssert::TraceContext < ::PowerAssert::Context
-  # @return [TraceContext] a new instance of TraceContext
-  #
-  # source://power_assert//lib/power_assert/context.rb#206
-  def initialize(binding); end
-
-  # source://power_assert//lib/power_assert/context.rb#224
-  def disable; end
-
-  # source://power_assert//lib/power_assert/context.rb#219
-  def enable; end
-
-  # @return [Boolean]
-  #
-  # source://power_assert//lib/power_assert/context.rb#228
-  def enabled?; end
 end
 
 # source://power_assert//lib/power_assert/version.rb#2
