@@ -82,6 +82,7 @@ class SignInForm
   include ActiveFormModel::Virtual
 
   fields :email, :password
+  normalizes :email, with: ->(value) { value.downcase }
 
   validates :email, presence: true
   validates :password, presence: true
@@ -97,10 +98,6 @@ class SignInForm
 
   def user
     @user ||= User.find_by(email: email)
-  end
-
-  def email=(value)
-    @email = value.downcase
   end
 end
 ```
